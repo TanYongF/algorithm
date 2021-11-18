@@ -24,45 +24,43 @@ typedef pair<int,int> P;
 const int MAXN = 1005;
 int T;
 int len;
-vector<vector<int>> edge(MAXN);
+vector<vector<int>> edge(101); 
 vector<int> timeNeed(MAXN);
 unordered_map<int, P> mp;
-int getChildNum(int val){
-	if(edge[val].size() == 0){
-		mp[val] = {0,0};
-		return 1;
+long long sumTime = 0;
+int  curTime = 0;
+bool hasVisted[101];
+void dfs(int curNode){
+	if(edge[curNode].size() == 0){
+		sumTime += curTime;
+		hasVisted[curNode] = true;
 	} 
-	mp[val] = {0,0};
-	mp[val].first = getChildNum(edge[val][0]);
-	if(edge[val].size() == 2) mp[val].second = getChildNum(edge[val][1]);
-}
-int curTime = 0;
-int hasVisited = 0;
-void getTime(int val){
-	if(edge[val].size() == 0){
-		timeNeed[val] = curTime;
-		hasVisited++;
-		return; 
-	}
-	timeNeed[val] = curTime;
+	if(not hasVisted[curNode]){
+		sumTime += curTime, hasVisted[curNode] = true;
+		
+	} 
 	curTime++;
-	if((not mp[val].first) and (not mp[val].second)){
-		if(mp[val].)
+	for(auto next : edge[curNode]){
+ 		dfs(next);
 	}
-	if(not mp[val].first) getTime(edge[val][0]);
-
+	curTime++;
 }
-
 void slove(){
 	cin >> len;
-	for(int i = 0; i < len ;i++){
+	edge = vector<vector<int>>(101); 
+	memset(hasVisted, false, sizeof(hasVisted));
+	// memset(edge, 0, sizeof(edge));
+	hasVisted[1] = true;
+	curTime = 0;
+	sumTime = 0;
+	for(int i = 0; i < len-1 ;i++){
 		int from, to;	
 		cin >> from >> to;
 		edge[from].push_back(to);
 	}
-	getChildNum(1);
-	getTime(1);
-
+	dfs(1);
+	// cout << sumTime << endl;
+	printf("%.10f\n", 1.0 * sumTime / (len - 1));
 }
 
 int main(int argc, char * argv[]){
@@ -70,12 +68,7 @@ int main(int argc, char * argv[]){
 	cin >> T;
 	while(T--){
 		slove();
-		cin >> len;
-		// for()
-		
-
 	}
-
 
     return 0;
 }

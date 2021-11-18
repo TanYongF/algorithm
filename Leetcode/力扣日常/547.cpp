@@ -57,11 +57,3 @@ public:
     }
 };
 
-int main(int argc, char * argv[]){
-
-	Solution s = Solution();
-	/* code */
-
-
-    return 0;
-}
