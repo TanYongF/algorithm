@@ -30,6 +30,14 @@ struct TreeNode {
   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+
+/*减枝策略： 如果有两个是一样的：
+1. 前者不选择，后者不选择。
+2. 前者选择， 后者选择
+3. 前者不选择， 后者选择
+4. 前者选择，后者不选择
+其中3，4两种策略是一样的，我们使用1，2，4策略。
+*/
 class Solution {
 public:
 	int len ;
@@ -49,11 +57,13 @@ public:
     		if(temp.size() >= 2) ans.push_back(temp);
     		return;
     	}
+    	//前者选择或不选择 ==> 后者选择
     	if(nums[curIdx] >= last){
     		temp.push_back(nums[curIdx]);
     		dfs(curIdx + 1, nums[curIdx]);
     		temp.pop_back();
     	}
+    	//前者不选择 ==> 后者不选择
     	if(nums[curIdx] != last){
     		dfs(curIdx + 1, last);
     	}
