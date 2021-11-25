@@ -39,12 +39,12 @@ int main(int argc, char * argv[]){
 				ok = false;
 			} 
 		}
-		for(int i = 1; i <= n; i++) cout << find(i) << " ";
-			cout << endl;
+		// for(int i = 1; i <= n; i++) cout << find(i) << " ";
+		// 	cout << endl;
 		if(not ok) continue;
-		
+
 		int s = 0;
-		for(int i = 1; i <= n; i++) if(inDegree[i] % 2 == 1) ++s;
+		for(int i = 1; i <= n; i++) if(inDegree[i] % 2) ++s;
 		flag = (s == 2);
 		if(flag) cout << "Zhen" << endl;
 		else cout << "Xun" << endl;	/* code */
