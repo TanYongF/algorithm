@@ -54,7 +54,7 @@ int main(){
 		memset(len, 0, sizeof(len));
 	    scanf("%s", a);
 	    n = strlen(a);
-	    cout << n;
+	    // cout << n;
 	    trans();
 	    Manacher();
 	    ll ans = 0;
