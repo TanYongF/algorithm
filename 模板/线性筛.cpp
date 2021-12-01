@@ -30,11 +30,19 @@ void pre(){
 }
 int main(){
 	pre();
+	long long  ans  = 1;
 	for (int i = 0; i < 1000; ++i)
 	{
+		
 		// cout << isPrime[i] << ",";
-		cout << prime[i] << ",";
+		// cout << prime[i] << ",";
+		if(prime[i] > 30000) break;
+		ans++;
+		// cout << ans << endl;
+		// if(prime[i] < 1000) ans++;
+
 	}
+	cout << ans << endl;
 
 
 }
