@@ -15,16 +15,30 @@ struct TreeNode {
 
 class Solution {
 public:
-    vector<int> targetIndices(vector<int>& nums, int target) {
-    	sort(nums.begin(), nums.end());
-    	vector<int> ans;
-    	for(int i = 0; i < nums.size(); i++){
-    		if(nums[i] == target)ans.push_back(i);
-    	}
-    	return ans;  
+    int largestSumAfterKNegations(vector<int>& nums, int k) {
+    	unordered_map<int,int> mp;
+    	for(auto num : nums) mp[num]++;
+    	int ans = accumulate(nums.begin(), nums.end(), 0);
+   		for(int i = -100; i <= -1; i++){
+   			if(mp[i]){
+   				int op = min(mp[i], k);
+   				k -= op;
+   				mp[i] -= op;
+   				mp[-1 * i] += op;
+   				ans += 2 * i * op;
+   				if(k == 0) return ans;
+   			}
+   		}
+   		if(k % 2 == 0 or mp[0]) return ans;
+   		for(int i = 1; i <= 100; i++){
+   			if(mp[i]){
+   				return ans - 2 * i;
+   				break;
+   			}
+   		}
+   		return 0;
     }
 };
-
 int main(int argc, char * argv[]){
 
 	Solution s = Solution();
