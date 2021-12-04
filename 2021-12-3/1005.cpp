@@ -1,3 +1,4 @@
+//https://leetcode-cn.com/problems/maximize-sum-of-array-after-k-negations/
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -42,6 +43,10 @@ public:
 int main(int argc, char * argv[]){
 
 	Solution s = Solution();
+
+  char a= 'H';
+  a = (a >= 'A' and a <= '2') ? (a - 'A' + 'a') : a;
+  cout << a << endl;
 	/* code */
 
 
