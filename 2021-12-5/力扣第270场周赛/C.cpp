@@ -74,7 +74,7 @@ public:
     	find(root->left, str);
     	str.pop_back();
 
-    	ans.push_back('R');
+    	str.push_back('R');
     	find(root->right,str);
     	str.pop_back();
     }
