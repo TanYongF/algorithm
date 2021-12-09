@@ -40,11 +40,11 @@ public:
     	for(auto it : st){
     		if(inDeg[it] < outDeg[it]) start = it;
     	}
-    	cout << start << endl;
+    	// cout << start << endl;
     	dfs(start);
     	
     	reverse(ans.begin(), ans.end());
-    	for(auto a : ans) cout << a[0] << " " << a[1] << endl; 
+    	// for(auto a : ans) cout << a[0] << " " << a[1] << endl; 
     	return ans;
     }
 };
