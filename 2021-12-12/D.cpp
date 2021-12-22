@@ -26,8 +26,8 @@ public:
     	for(int i = 1; i <= len; i++){
     		preAdd[i] = preAdd[i-1] + a[i];
     	}
-    	for(int i =0; i <= len ;i++) cout << preAdd[i] << " ";
-    		cout << endl;
+    	// for(int i =0; i <= len ;i++) cout << preAdd[i] << " ";
+    	// 	cout << endl;
     	int ans = INT_MIN, last;
     	int cur;
     	int left = max(startPos - k , 0), right = min(len, startPos + k);
