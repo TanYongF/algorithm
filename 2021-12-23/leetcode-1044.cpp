@@ -25,6 +25,7 @@ public:
     		power[i+1] = power[i] * base;
     		hash[i+1] = hash[i] * base + (s[i]-'a') + 1; 
     	}
+
     	auto check = [&](int inv){
 	    	unordered_set<ll> st;
 	    	for(int i = 1; i <= len - inv + 1; i++){
@@ -37,6 +38,7 @@ public:
 	    	}
 	    	return false;
 	    };
+	    
     	int L = 0, R = len;
     	while(L <= R){
     		int mid = (L + R) >> 1;
