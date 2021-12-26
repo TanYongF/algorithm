@@ -37,8 +37,6 @@ public:
         	curday++;
         }   
         return ans;
-       
-
     }
 
 };
