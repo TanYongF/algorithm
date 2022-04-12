@@ -21,7 +21,7 @@ typedef unsigned long long ull;
 #define ms(s,val) memset(s, val, sizeof(s))
 const int inf = INT_MAX;
 
-int T;
+int T;;;
 
 int main(int argc, char * argv[]){
 	while(1){
