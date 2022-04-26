@@ -28,6 +28,7 @@ void getPrime(){
 class Solution {
 public:
     int getNumber(vector<int>& a) {
+    	cout << "牛成本" <<endl;
     	getPrime();
     	// cout << 1;
     	unordered_set<int> st;
