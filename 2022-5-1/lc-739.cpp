@@ -34,6 +34,7 @@ int main(int argc, char * argv[]){
 
 	Solution s = Solution();
 	vector<int> v = {73,74,75,71,69,72,76,73};
+	s.dailyTemperatures(v);
 	/* code */
 
 
