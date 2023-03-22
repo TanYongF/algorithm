@@ -36,7 +36,7 @@ int aa[100000000];
 // }
 
 
-
+// 堆存储的Kruskal算法
 void dijstraHeap(){
 	vector<vector<pair<int,int>>> g(MAXN);
 	bool hasV[MAXN];
@@ -62,17 +62,45 @@ void dijstraHeap(){
 		else hasV[node] = true;
 
 		//遍历此节点往后的相邻节点,更新后续节点
-		for(auto &[nextNode, nextDis] : g[node]){
+
+	}		for(auto &[nextNode, nextDis] : g[node]){
 			if(hasV[nextNode]) continue;
 			if(dist[nextNode] > dis + nextDis){
 				dist[nextNode] = dis + nextDis;
 				heap.push({dist[nextNode], nextNode});
 			}
 		}
-	}
 	for(int i = 1; i <= n; i++) cout << dist[i] << " ";
 }
 int main(int argc, char * argv[]){
 	dijstraHeap();
     return 0;
+}
+
+
+// 最小生成树 Kruskal算法
+struct Edge{
+	int from, to, val;
+	bool operator < (const Edge &w) const{
+		return val < w.val;
+	}
+}
+int find(int x){
+	return x == fa[x] ? x : fa[x] = find(fa[x]);
+}
+
+// m : 边数
+// n : 节点数
+int Kruskal(int m){
+	 int res = 0;
+	 for(int i = 0; i < n; i++) fa[i] = 0;
+	 sort(edge, edge + m);
+	for(int i = 0; i < m; i++){
+		int a = edge[i].from, b = edge[i].to;
+		if(find(a) != find(b)){
+			res += edge[i].v;
+			father[find(a)] = find(b);
+		}
+	}
+	return s;
 }

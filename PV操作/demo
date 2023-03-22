@@ -1,0 +1,115 @@
+//semaphore m0 = 0, m1 =3, m2 = 2, m3 = 2;
+semaphore m_full[4] = {3, 0, 0, 0};
+semaphore m_empty[4] = {0, 3, 2, 2};
+semaphore mutex[4] = {1};
+Process p0{
+    P(mutex[i]);
+    P(m_full[i]);
+    //Get Message from i
+    V(mutex[i]);
+    P(m_empty[(i+1)%4]);
+    P(mutex[(i+1)%4]);
+    //Put the Message to the（i+1)%4
+    V(m_full[(i+1)%4]);
+    V(mutex[(i+1)%4]);
+}
+
+
+
+/*------------------*/
+互斥量: 教师、电脑
+semaphore computer_mutex = 2m;;
+semaphore student_mutex[2n];
+semaphore teacher = 1; //一位老师
+Process studentI{
+    P(student_mutex[i]);
+    P(count_mutex);
+    count_i++;
+    if(count_i == 2)  V(ready_i), V(ready_i);
+    V(count_mutex);
+    P(ready_i);
+    //实验上机
+    //提交
+    P(teacher);
+    //验收检查
+    V(teacher);
+
+    //等待操作
+    P(count_mutex);
+    count_i++;
+    if(count_i == 2)  V(ready_i), V(ready_i);
+    V(count_mutex);
+
+    P(ready_i);
+    //离开
+}
+Process Teacher{
+    while(true){
+        V(check);
+        V(computer_mutex);
+    }
+
+}
+
+
+
+
+/*----------------------3---------------------*/
+围棋盒：互斥访问
+C等待A和B取完再合计
+
+semaphore box = 1;
+semaphore done_black = 0, done_white = 0;
+int black = 0, whsite = 0; //黑白子数量
+process 1(){
+    while(1){
+        P(box);
+        if(Getblack()) black++, count++;
+        else V(done_black), V(box), break;
+        V(box);
+    }
+}
+process 3(){
+    P(done_black);
+    P(done_white);
+    Printf(count);
+}
+
+
+
+/*--------------------------9-------------------------*/
+
+semaphore mutex;
+semaphore turn_a = 1, turn_b = 0;
+process A(){
+    P(turn_a);
+    P(mutex);
+    //走钢丝
+    V(mutex);
+    V(turn_b);
+}
+
+
+
+/*----------------------6-----------------------*/
+//读者写者问题，同类不互斥、不同类不互斥
+semaphore mutex_room = 1, mutex_count; //控制会议室
+int count_i = 0, count_j = 0, count_k = 0;
+process Java{
+    P(mutex_count);
+    if(count_i == 0) P(mutex_room);
+    count_i++;
+    V(mutex_count);
+    //进入会议室
+    //开会
+    //退出会议室
+    P(mutex_count);
+    count_i--;
+    if(count_i == 0) V(mutex_room);
+    V(mutex_count)
+}
+
+
+/*--------------------------15---------------------*/
+
+

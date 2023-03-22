@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long 
+// typedef long long 
 typedef unsigned long long ull;
 #define ms(s,val) memset(s, val, sizeof(s))
 const int inf = INT_MAX;
@@ -13,7 +13,7 @@ vector<int> getNext(string &pattern){
      int i = 0, j = -1;
      vector<int> next = vector<int>(pattern.size());
      next[0] = -1;
-     while(i < pattern.size()){
+     while(i < (int)pattern.size()){
           if(j == -1 or pattern[i] == pattern[j]){
                next[++i] = ++j;
           }else{
@@ -25,25 +25,25 @@ vector<int> getNext(string &pattern){
 int kmp(string &t, string &p){
      auto next = getNext(p);
      int i = 0, j = 0;
-     while(i < t.size() and j < (int)p.size()){ // remeber that  Member type size_type is an unsigned integral type.
+     while(i < (int)t.size() and j < (int)p.size()){ // remeber that  Member type size_type is an unsigned integral type.
           if(j == -1 or t[i] == p[j]){
                i++, j++;
           }else{
                j = next[j];
           }
      }
-     if(j == p.size()) return i-j;
+     if(j == (int)p.size()) return i-j;
      else return -1;
 }
 
 int main(int argc, char * argv[]){
-	// string s1;
-	// string s2;
-	// cin >> s1 >> s2 ;
+	string s1;
+	string s2;
+	cin >> s1 >> s2 ;
 
-	// cout << kmp(s1, s2);
+	cout << kmp(s1, s2);
 
-	vector<int> 
+	// vector<int> 
 
     return 0;
 }

@@ -33,7 +33,6 @@ int main(){
 	long long  ans  = 1;
 	for (int i = 0; i < 1000; ++i)
 	{
-		
 		// cout << isPrime[i] << ",";
 		// cout << prime[i] << ",";
 		if(prime[i] > 30000) break;
@@ -43,6 +42,4 @@ int main(){
 
 	}
 	cout << ans << endl;
-
-
 }
